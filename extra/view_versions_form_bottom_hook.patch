@@ -1,0 +1,12 @@
+diff --git a/app/views/versions/_form.rhtml b/app/views/versions/_form.rhtml
+index b829cf2..694f8e7 100644
+--- a/app/views/versions/_form.rhtml
++++ b/app/views/versions/_form.rhtml
+@@ -7,6 +7,7 @@
+ <p><%= f.text_field :wiki_page_title, :label => :label_wiki_page, :size => 60, :disabled => @project.wiki.nil? %></p>
+ <p><%= f.text_field :effective_date, :size => 10 %><%= calendar_for('version_effective_date') %></p>
+ <p><%= f.select :sharing, @version.allowed_sharings.collect {|v| [format_version_sharing(v), v]} %></p>
++<%= call_hook(:view_versions_form_bottom, :version => @version, :form => f) %>
+ 
+ <% @version.custom_field_values.each do |value| %>
+ 	<p><%= custom_field_tag_with_label :version, value %></p>

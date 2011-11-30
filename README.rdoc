@@ -1,3 +1,5 @@
 = Redmine Version Require Due Date
 
 This plugin adds an additional checkbox attribute on Versions called "Require due date". If it is checked, any issue assigned to that version will require a due date to be set.
+
+Requires the patch in extra/ to be in place.
