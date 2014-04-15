@@ -1,10 +1,8 @@
-require 'redmine'
-require 'dispatcher'
 require 'redmine_version_require_due_date/hooks'
 require 'redmine_version_require_due_date/patches/issue_patch'
 require 'redmine_version_require_due_date/patches/version_patch'
 
-Dispatcher.to_prepare do
+Rails.configuration.to_prepare do
   Issue.send(:include, RedmineVersionRequireDueDate::Patches::IssuePatch) unless Issue.include?(RedmineVersionRequireDueDate::Patches::IssuePatch)
   Version.send(:include, RedmineVersionRequireDueDate::Patches::VersionPatch) unless Version.include?(RedmineVersionRequireDueDate::Patches::VersionPatch)
 end
